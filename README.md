@@ -2,6 +2,8 @@
 
 > A Vue.js project
 
+![image](https://github.com/ndliu3549/pbp-support-tool/blob/master/demo_01.png)
+
 ## Build Setup
 
 ``` bash
