@@ -7,8 +7,10 @@
 			<button class='btn btn-primary' type='button' @click='CleanBallSubmitMessage()'>Clean data</button>
 		</div>
 
-		<ul id='ul'>
-		</ul>
+		<div class="container demo">
+			<ul id='ul'>
+			</ul>
+		</div>
 
 	</div>
 </template>
@@ -103,33 +105,36 @@
 
 				$.each(val, function(i, item) {
 
-					if ( (inning != item.Inning) && (groupGate == true) ) {
-						
+					if((inning != item.Inning) && (groupGate == true)) {
+
 						list = `
 						
 						${list}
+						
+							</div>
 						
 						</div>
 						
 						`
 					}
 
-					if (inning != item.Inning) {
-					
+					if(inning != item.Inning) {
+
 						list = `
 						
 						${list}
 						
-						<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#${i}">
-							第${item.Game}場：${item.Team}：${item.Inning}
-						</button>
+						<div class="row">
 						
-						<div id="${i}" class="collapse in">
-						
+							<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#${i}">
+								第${item.Game}場：${item.Team}：${item.Inning}
+							</button>
+							
+							<div id="${i}" class="collapse in">
 						`
-						
+
 						inning = item.Inning
-						
+
 						groupGate = true;
 					}
 
@@ -137,17 +142,21 @@
 					
 					${list}
 					
-					<li>${item.Log}</li>
-					<input disabled id='input_Player${i}' size='3' value=${item.Player} />
-					<input disabled id='input_Base1${i}' size='3' value=${item.Base1} />
-					<input disabled id='input_Base2${i}' size='3' value=${item.Base2} />
-					<input disabled id='input_Base3${i}' size='3' value=${item.Base3} />
-					<input disabled id='input_Id${i}' size='3' value=${item.Id} />
-					<input disabled id='input_Direction${i}' size='1' value=${item.Direction} />
-					<input disabled id='input_Out${i}' size='3' value=${item.Out} />
-					<input disabled id='input_Result${i}' size='16' value=${item.Result} />
-					<button id='enable_modify${i}' type='button' class='enable' data-key=${i}>啟用更正</button>
-					<button disabled id='summit_modify${i}' type='button' class='summit' data-key=${i}>送出更正</button>
+					<div class="col">
+					
+						<li>${item.Log}</li>
+						<input disabled id='input_Player${i}' size='3' value=${item.Player} />
+						<input disabled id='input_Base1${i}' size='3' value=${item.Base1} />
+						<input disabled id='input_Base2${i}' size='3' value=${item.Base2} />
+						<input disabled id='input_Base3${i}' size='3' value=${item.Base3} />
+						<input disabled id='input_Id${i}' size='3' value=${item.Id} />
+						<input disabled id='input_Direction${i}' size='1' value=${item.Direction} />
+						<input disabled id='input_Out${i}' size='3' value=${item.Out} />
+						<input disabled id='input_Result${i}' size='16' value=${item.Result} />
+						<button id='enable_modify${i}' type='button' class='enable' data-key=${i}>啟用更正</button>
+						<button disabled id='summit_modify${i}' type='button' class='summit' data-key=${i}>送出更正</button>
+					
+					</div>
 					
 					`
 				});
@@ -204,5 +213,12 @@
 </script>
 
 <style>
-
+	.container.demo .row {
+		padding: 5px;
+	}
+	
+	.container.demo .col {
+		padding: 5px;
+		margin-left: 25px;
+	}
 </style>
