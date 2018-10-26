@@ -1,12 +1,15 @@
 <template>
 	<div id='app'>
+
 		<div style='text-align:center;'>
 			<h2>CPBL PLAY BY PLAY Support Tool</h2>
 			<button class='btn btn-primary' type='button' @click='BallSubmitMessage(listdata)'>Import LOG data（JSON format）</button>
 			<button class='btn btn-primary' type='button' @click='CleanBallSubmitMessage()'>Clean data</button>
 		</div>
+
 		<ul id='ul'>
 		</ul>
+
 	</div>
 </template>
 
@@ -26,7 +29,8 @@
 		name: 'App',
 		data() {
 			return {
-				listdata: []
+				listdata: [],
+				isShow: false
 			}
 		},
 		methods: {
@@ -94,15 +98,46 @@
 
 				let val = snapshot.val();
 				let list = '';
+				let inning = '';
+				let groupGate = false;
 
 				$.each(val, function(i, item) {
+
+					if ( (inning != item.Inning) && (groupGate == true) ) {
+						
+						list = `
+						
+						${list}
+						
+						</div>
+						
+						`
+					}
+
+					if (inning != item.Inning) {
 					
+						list = `
+						
+						${list}
+						
+						<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#${i}">
+							第${item.Game}場：${item.Team}：${item.Inning}
+						</button>
+						
+						<div id="${i}" class="collapse in">
+						
+						`
+						
+						inning = item.Inning
+						
+						groupGate = true;
+					}
+
 					list = `
 					
 					${list}
 					
-					<li>第${item.Game}場：${item.Team}：${item.Inning}：${item.Log}</li>
-					
+					<li>${item.Log}</li>
 					<input disabled id='input_Player${i}' size='3' value=${item.Player} />
 					<input disabled id='input_Base1${i}' size='3' value=${item.Base1} />
 					<input disabled id='input_Base2${i}' size='3' value=${item.Base2} />
@@ -111,7 +146,6 @@
 					<input disabled id='input_Direction${i}' size='1' value=${item.Direction} />
 					<input disabled id='input_Out${i}' size='3' value=${item.Out} />
 					<input disabled id='input_Result${i}' size='16' value=${item.Result} />
-					
 					<button id='enable_modify${i}' type='button' class='enable' data-key=${i}>啟用更正</button>
 					<button disabled id='summit_modify${i}' type='button' class='summit' data-key=${i}>送出更正</button>
 					
@@ -134,7 +168,7 @@
 				$('#input_Out' + key).attr('disabled', false);
 				$('#input_Result' + key).attr('disabled', false);
 				$('#summit_modify' + key).attr('disabled', false);
-				
+
 				$('#enable_modify' + key).attr('disabled', true);
 			});
 
@@ -162,7 +196,7 @@
 				$('#input_Out' + key).attr('disabled', true);
 				$('#input_Result' + key).attr('disabled', true);
 				$('#summit_modify' + key).attr('disabled', true);
-				
+
 				$('#enable_modify' + key).attr('disabled', false);
 			});
 		}
