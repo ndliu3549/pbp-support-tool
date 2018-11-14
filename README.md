@@ -4,7 +4,7 @@
 
 ![image](https://github.com/ndliu3549/pbp-support-tool/blob/master/demo_01.gif)
 
-![image](https://github.com/ndliu3549/pbp-support-tool/blob/master/demo_02.png)
+![image](https://github.com/ndliu3549/pbp-support-tool/blob/master/demo_03.png)
 
 ## Build Setup
 
