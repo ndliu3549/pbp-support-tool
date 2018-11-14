@@ -112,6 +112,11 @@
 						
 						${list}
 						
+						<div class="col">
+							<button id='enable_modify${arrayHeader}' type='button' class='enable' data-key=${arrayHeader}>啟用更正</button>
+							<button disabled id='summit_modify${arrayHeader}' type='button' class='summit' data-key=${arrayHeader}>送出更正</button>
+						</div>
+						
 							</div>
 						
 						</div>
@@ -130,9 +135,6 @@
 							<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#${i}">
 								第${item.Game}場：${item.Team}：${item.Inning}
 							</button>
-							
-							<button id='enable_modify${i}' type='button' class='enable' data-key=${i}>啟用更正</button>
-							<button disabled id='summit_modify${i}' type='button' class='summit' data-key=${i}>送出更正</button>
 							
 							<div id="${i}" class="collapse in">
 						`
