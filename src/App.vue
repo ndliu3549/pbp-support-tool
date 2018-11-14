@@ -26,6 +26,7 @@
 	firebase.initializeApp(config);
 
 	var BaseballRef = firebase.database().ref('Baseball');
+	var idArray = Array();
 
 	export default {
 		name: 'App',
@@ -93,15 +94,15 @@
 			}
 		},
 		mounted() {
-
+			
 			this.getData();
 
 			BaseballRef.on('value', function(snapshot) {
-
 				let val = snapshot.val();
 				let list = '';
 				let inning = '';
 				let groupGate = false;
+				let arrayHeader = '';
 
 				$.each(val, function(i, item) {
 
@@ -130,12 +131,19 @@
 								第${item.Game}場：${item.Team}：${item.Inning}
 							</button>
 							
+							<button id='enable_modify${i}' type='button' class='enable' data-key=${i}>啟用更正</button>
+							<button disabled id='summit_modify${i}' type='button' class='summit' data-key=${i}>送出更正</button>
+							
 							<div id="${i}" class="collapse in">
 						`
 
 						inning = item.Inning
 
 						groupGate = true;
+
+						arrayHeader = i;
+
+						idArray[arrayHeader] = Array();
 					}
 
 					list = `
@@ -153,60 +161,78 @@
 						<input disabled id='input_Direction${i}' size='1' value=${item.Direction} />
 						<input disabled id='input_Out${i}' size='3' value=${item.Out} />
 						<input disabled id='input_Result${i}' size='16' value=${item.Result} />
-						<button id='enable_modify${i}' type='button' class='enable' data-key=${i}>啟用更正</button>
-						<button disabled id='summit_modify${i}' type='button' class='summit' data-key=${i}>送出更正</button>
 					
 					</div>
 					
 					`
+
+					idArray[arrayHeader].push(i);
 				});
 
 				$('ul').html(list)
 			});
 
 			$('#ul').on('click', '.enable', function() {
-
 				var key = $(this).data('key');
 
-				$('#input_Player' + key).attr('disabled', false);
-				$('#input_Base1' + key).attr('disabled', false);
-				$('#input_Base2' + key).attr('disabled', false);
-				$('#input_Base3' + key).attr('disabled', false);
-				$('#input_Id' + key).attr('disabled', false);
-				$('#input_Direction' + key).attr('disabled', false);
-				$('#input_Out' + key).attr('disabled', false);
-				$('#input_Result' + key).attr('disabled', false);
-				$('#summit_modify' + key).attr('disabled', false);
+				for(var index in idArray[key]) {
 
-				$('#enable_modify' + key).attr('disabled', true);
+					$('#input_Player' + idArray[key][index]).attr('disabled', false);
+					$('#input_Base1' + idArray[key][index]).attr('disabled', false);
+					$('#input_Base2' + idArray[key][index]).attr('disabled', false);
+					$('#input_Base3' + idArray[key][index]).attr('disabled', false);
+					$('#input_Id' + idArray[key][index]).attr('disabled', false);
+					$('#input_Direction' + idArray[key][index]).attr('disabled', false);
+					$('#input_Out' + idArray[key][index]).attr('disabled', false);
+					$('#input_Result' + idArray[key][index]).attr('disabled', false);
+					$('#summit_modify' + idArray[key][index]).attr('disabled', false);
+
+					$('#enable_modify' + idArray[key][index]).attr('disabled', true);
+				}
 			});
 
 			$('#ul').on('click', '.summit', function() {
-
 				var key = $(this).data('key');
+				var dataArray = Array();
 
-				BaseballRef.child(key).update({
-					'Player': $('#input_Player' + key).val(),
-					'Base1': $('#input_Base1' + key).val(),
-					'Base2': $('#input_Base2' + key).val(),
-					'Base3': $('#input_Base3' + key).val(),
-					'Id': $('#input_Id' + key).val(),
-					'Direction': $('#input_Direction' + key).val(),
-					'Out': $('#input_Out' + key).val(),
-					'Result': $('#input_Result' + key).val()
-				});
+				for(var index in idArray[key]) {
+					
+					dataArray[index] = Array();
+					dataArray[index][0] = $('#input_Player' + idArray[key][index]).val()
+					dataArray[index][1] = $('#input_Base1' + idArray[key][index]).val()
+					dataArray[index][2] = $('#input_Base2' + idArray[key][index]).val()
+					dataArray[index][3] = $('#input_Base3' + idArray[key][index]).val()
+					dataArray[index][4] = $('#input_Id' + idArray[key][index]).val()
+					dataArray[index][5] = $('#input_Direction' + idArray[key][index]).val()
+					dataArray[index][6] = $('#input_Out' + idArray[key][index]).val()
+					dataArray[index][7] = $('#input_Result' + idArray[key][index]).val()
+				}
 
-				$('#input_Player' + key).attr('disabled', true);
-				$('#input_Base1' + key).attr('disabled', true);
-				$('#input_Base2' + key).attr('disabled', true);
-				$('#input_Base3' + key).attr('disabled', true);
-				$('#input_Id' + key).attr('disabled', true);
-				$('#input_Direction' + key).attr('disabled', true);
-				$('#input_Out' + key).attr('disabled', true);
-				$('#input_Result' + key).attr('disabled', true);
-				$('#summit_modify' + key).attr('disabled', true);
+				for(var index in idArray[key]) {
 
-				$('#enable_modify' + key).attr('disabled', false);
+					BaseballRef.child(idArray[key][index]).update({
+						'Player': dataArray[index][0],
+						'Base1': dataArray[index][1],
+						'Base2': dataArray[index][2],
+						'Base3': dataArray[index][3],
+						'Id': dataArray[index][4],
+						'Direction': dataArray[index][5],
+						'Out': dataArray[index][6],
+						'Result': dataArray[index][7]
+					});
+
+					$('#input_Player' + idArray[key][index]).attr('disabled', true);
+					$('#input_Base1' + idArray[key][index]).attr('disabled', true);
+					$('#input_Base2' + idArray[key][index]).attr('disabled', true);
+					$('#input_Base3' + idArray[key][index]).attr('disabled', true);
+					$('#input_Id' + idArray[key][index]).attr('disabled', true);
+					$('#input_Direction' + idArray[key][index]).attr('disabled', true);
+					$('#input_Out' + idArray[key][index]).attr('disabled', true);
+					$('#input_Result' + idArray[key][index]).attr('disabled', true);
+					$('#summit_modify' + idArray[key][index]).attr('disabled', true);
+
+					$('#enable_modify' + idArray[key][index]).attr('disabled', false);
+				}
 			});
 		}
 	}
