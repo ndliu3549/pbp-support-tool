@@ -27,6 +27,7 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
+			'vendor': path.resolve(__dirname, 'C:/Users/User/Desktop/pbp-support-tool/src/vendor'),
     }
   },
   module: {
