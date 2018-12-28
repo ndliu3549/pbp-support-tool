@@ -1,18 +1,17 @@
 import Vue from 'vue'
-import axios from 'axios'
-import VueAxios from 'vue-axios'
-
 import router from './router';
-
 import App from './App'
+
+import JsonExcel from 'vue-json-excel'
+Vue.component('downloadExcel', JsonExcel)
 
 Vue.config.productionTip = false
 
-Vue.use(VueAxios, axios)
-
 new Vue({
-  el: '#app',
-  components: { App },
-  template: '<App/>',
+	el: '#app',
+	components: {
+		App
+	},
+	template: '<App/>',
 	router,
 })

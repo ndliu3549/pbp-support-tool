@@ -31,9 +31,9 @@
 
 					$.each(val, function(i, item) {
 
-						if(inning != item.Inning) {
+						if(inning != item.inning) {
 
-							inning = item.Inning
+							inning = item.inning
 
 							arrayHeader = i;
 
@@ -60,15 +60,15 @@
 						list = `
 						${list}
 						<div style='margin:5px;text-align:center;' class="col">
-							<li>${val.Log}</li>
+							<li>${val.log}</li>
 							<input disabled id='input_Player${ID}' size='3' value=${val.Player} />
-							<input disabled id='input_Base1${ID}' size='3' value=${val.Base1} />
-							<input disabled id='input_Base2${ID}' size='3' value=${val.Base2} />
-							<input disabled id='input_Base3${ID}' size='3' value=${val.Base3} />
-							<input disabled id='input_Id${ID}' size='3' value=${val.Id} />
-							<input disabled id='input_Direction${ID}' size='1' value=${val.Direction} />
-							<input disabled id='input_Out${ID}' size='3' value=${val.Out} />
-							<input disabled id='input_Result${ID}' size='16' value=${val.Result} />
+							<input disabled id='input_base1${ID}' size='3' value=${val.base1} />
+							<input disabled id='input_base2${ID}' size='3' value=${val.base2} />
+							<input disabled id='input_base3${ID}' size='3' value=${val.base3} />
+							<input disabled id='input_id${ID}' size='3' value=${val.id} />
+							<input disabled id='input_direction${ID}' size='1' value=${val.direction} />
+							<input disabled id='input_out${ID}' size='3' value=${val.out} />
+							<input disabled id='input_result${ID}' size='16' value=${val.result} />
 						</div>
 					`
 					});
@@ -93,13 +93,13 @@
 					for(var index in idArray[key]) {
 
 						$('#input_Player' + idArray[key][index]).attr('disabled', false);
-						$('#input_Base1' + idArray[key][index]).attr('disabled', false);
-						$('#input_Base2' + idArray[key][index]).attr('disabled', false);
-						$('#input_Base3' + idArray[key][index]).attr('disabled', false);
-						$('#input_Id' + idArray[key][index]).attr('disabled', false);
-						$('#input_Direction' + idArray[key][index]).attr('disabled', false);
-						$('#input_Out' + idArray[key][index]).attr('disabled', false);
-						$('#input_Result' + idArray[key][index]).attr('disabled', false);
+						$('#input_base1' + idArray[key][index]).attr('disabled', false);
+						$('#input_base2' + idArray[key][index]).attr('disabled', false);
+						$('#input_base3' + idArray[key][index]).attr('disabled', false);
+						$('#input_id' + idArray[key][index]).attr('disabled', false);
+						$('#input_direction' + idArray[key][index]).attr('disabled', false);
+						$('#input_out' + idArray[key][index]).attr('disabled', false);
+						$('#input_result' + idArray[key][index]).attr('disabled', false);
 						$('#summit_modify' + idArray[key][index]).attr('disabled', false);
 
 						$('#enable_modify' + idArray[key][index]).attr('disabled', true);
@@ -115,54 +115,42 @@
 
 						dataArray[index] = Array();
 						dataArray[index][0] = $('#input_Player' + idArray[key][index]).val()
-						dataArray[index][1] = $('#input_Base1' + idArray[key][index]).val()
-						dataArray[index][2] = $('#input_Base2' + idArray[key][index]).val()
-						dataArray[index][3] = $('#input_Base3' + idArray[key][index]).val()
-						dataArray[index][4] = $('#input_Id' + idArray[key][index]).val()
-						dataArray[index][5] = $('#input_Direction' + idArray[key][index]).val()
-						dataArray[index][6] = $('#input_Out' + idArray[key][index]).val()
-						dataArray[index][7] = $('#input_Result' + idArray[key][index]).val()
+						dataArray[index][1] = $('#input_base1' + idArray[key][index]).val()
+						dataArray[index][2] = $('#input_base2' + idArray[key][index]).val()
+						dataArray[index][3] = $('#input_base3' + idArray[key][index]).val()
+						dataArray[index][4] = $('#input_id' + idArray[key][index]).val()
+						dataArray[index][5] = $('#input_direction' + idArray[key][index]).val()
+						dataArray[index][6] = $('#input_out' + idArray[key][index]).val()
+						dataArray[index][7] = $('#input_result' + idArray[key][index]).val()
 					}
 
 					for(var index in idArray[key]) {
 
 						BaseballRef.child(idArray[key][index]).update({
 							'Player': dataArray[index][0],
-							'Base1': dataArray[index][1],
-							'Base2': dataArray[index][2],
-							'Base3': dataArray[index][3],
-							'Id': dataArray[index][4],
-							'Direction': dataArray[index][5],
-							'Out': dataArray[index][6],
-							'Result': dataArray[index][7]
+							'base1': dataArray[index][1],
+							'base2': dataArray[index][2],
+							'base3': dataArray[index][3],
+							'id': dataArray[index][4],
+							'direction': dataArray[index][5],
+							'out': dataArray[index][6],
+							'result': dataArray[index][7]
 						});
 
 						$('#input_Player' + idArray[key][index]).attr('disabled', true);
-						$('#input_Base1' + idArray[key][index]).attr('disabled', true);
-						$('#input_Base2' + idArray[key][index]).attr('disabled', true);
-						$('#input_Base3' + idArray[key][index]).attr('disabled', true);
-						$('#input_Id' + idArray[key][index]).attr('disabled', true);
-						$('#input_Direction' + idArray[key][index]).attr('disabled', true);
-						$('#input_Out' + idArray[key][index]).attr('disabled', true);
-						$('#input_Result' + idArray[key][index]).attr('disabled', true);
+						$('#input_base1' + idArray[key][index]).attr('disabled', true);
+						$('#input_base2' + idArray[key][index]).attr('disabled', true);
+						$('#input_base3' + idArray[key][index]).attr('disabled', true);
+						$('#input_id' + idArray[key][index]).attr('disabled', true);
+						$('#input_direction' + idArray[key][index]).attr('disabled', true);
+						$('#input_out' + idArray[key][index]).attr('disabled', true);
+						$('#input_result' + idArray[key][index]).attr('disabled', true);
 						$('#summit_modify' + idArray[key][index]).attr('disabled', true);
 
 						$('#enable_modify' + idArray[key][index]).attr('disabled', false);
 					}
 				});
 
-			},
-			getData() {
-				let vm = this
-
-				vm.axios.get('static/data.json')
-					.then(function(response) {
-						console.log(response);
-						vm.listdata = response.data
-					})
-					.catch(function(error) {
-						console.log(error);
-					});
 			},
 		}
 	};

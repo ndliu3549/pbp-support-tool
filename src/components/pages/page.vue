@@ -2,16 +2,39 @@
 	<div id='app'>
 		<div style='text-align:center;'>
 			<h2>CPBL PLAY BY PLAY Support Tool</h2>
-			<button class='btn btn-light' type='button' @click='BallSubmitMessage(listdata)'>
-				Import LOG data（JSON format）
-			</button>
-			<button class='btn btn-light' type='button' @click='CleanBallSubmitMessage()'>
-				Clean data
-			</button>
-			<button class='btn btn-light' type='button' @click="export2Excel">
-				Export LOG data（Excel format）
-			</button>
+
+			<div>
+				<button class='btn btn-light' type='button' @click='NewImport(ImportData)'>
+					Import New LOG
+				</button>
+
+				<label for="files" class="custom-file-upload">
+    				<i class="fa fa-cloud-upload"></i> Select File（CSV）
+				</label>
+
+				<input id="files" type="file" name="files[]" multiple/>
+
+				<button class='btn btn-light' type='button' @click='OldImport(ImportData)'>
+					Import Old LOG
+				</button>
+			</div>
+
+			<div>
+				<a class='btn btn-light' href="http://localhost:8080/">Refresh Page</a>
+
+				<button class='btn btn-light' type='button' @click="getExportJSON">
+					<downloadExcel :data="exportjson" :fields="json_fields" type="csv" name="Old LOG.csv">
+						Export Old LOG（Double Click）
+					</downloadExcel>
+				</button>
+
+				<button class='btn btn-light' type='button' @click='CleanData()'>
+					Clean Data
+				</button>
+			</div>
+
 		</div>
+
 		<div>
 			<router-view></router-view>
 			<div class="container demo">
@@ -19,8 +42,7 @@
 				</ul>
 			</div>
 		</div>
-		<pre id="result">
-		</pre>
+
 	</div>
 </template>
 
@@ -41,114 +63,126 @@
 		name: 'App',
 		data() {
 			return {
-				listdata: [],
+				ImportData: [],
 				isShow: false,
 				exportjson: [],
+				json_fields: {
+					'base1': 'base1',
+					'base2': 'base2',
+					'base3': 'base3',
+					'direction': 'direction',
+					'game': 'game',
+					'id': 'id',
+					'inning': 'inning',
+					'log': 'log',
+					'out': 'out',
+					'Player': 'Player',
+					'result': 'result',
+					'team': 'team'
+				},
 			}
 		},
 		methods: {
-			formatJson(filterVal, jsonData) {　　　　
-				return jsonData.map(v => filterVal.map(j => v[j]))　　
-			},
-			export2Excel() {
-				function syntaxHighlight(json) {
-					if(typeof json != 'string') {
-						json = JSON.stringify(json, undefined, 2);
-					}
-					json = json.replace(/&/g, '&').replace(/</g, '<').replace(/>/g, '>');
-					return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function(match) {
-						var cls = 'number';
-						if(/^"/.test(match)) {
-							if(/:$/.test(match)) {
-								cls = 'key';
-							} else {
-								cls = 'string';
-							}
-						} else if(/true|false/.test(match)) {
-							cls = 'boolean';
-						} else if(/null/.test(match)) {
-							cls = 'null';
-						}
-						return '<span class="' + cls + '">' + match + '</span>';
+			getExportJSON() {
+				let vm = this;
+				BaseballRef.on('value', function(snapshot) {
+					let val = snapshot.val();
+					$.each(val, function(i, item) {
+						vm.exportjson.push(item);
 					});
-				}
-				require.ensure([], () => {
-					let vm = this;
-					BaseballRef.on('value', function(snapshot) {
-						let val = snapshot.val();
-						$.each(val, function(i, item) {
-							vm.exportjson.push(item);
-						});
-					});
-					const {
-						export_json_to_excel
-					} = require('C:/Users/User/Desktop/pbp-support-tool/src/vendor/Export2Excel');
-					const tHeader = ['Base1', 'Base2', 'Base3', 'Direction', 'Game', 'Id', 'Inning', 'Log', 'Out', 'Player', 'Result', 'Team', ];
-					const filterVal = ['Base1', 'Base2', 'Base3', 'Direction', 'Game', 'Id', 'Inning', 'Log', 'Out', 'Player', 'Result', 'Team', ];
-					$('#result').html(syntaxHighlight(vm.exportjson));
-					const exportData = vm.exportjson;
-					const data = this.formatJson(filterVal, exportData);
-					export_json_to_excel(tHeader, data, 'ExportLOG');
 				});
 			},
-			CleanBallSubmitMessage() {
+			CleanData() {
 				BaseballRef.remove();
 			},
-			BallSubmitMessage(listdata) {
+			OldImport(ImportData) {
+				for(var i = 0; i < ImportData.length; i++) {
+					BaseballRef.push({
+						game: ImportData[i].game,
+						team: ImportData[i].team,
+						inning: ImportData[i].inning,
+						log: ImportData[i].log,
+						Player: ImportData[i].Player,
+						base1: ImportData[i].base1,
+						base2: ImportData[i].base2,
+						base3: ImportData[i].base3,
+						id: ImportData[i].id,
+						direction: ImportData[i].direction,
+						out: ImportData[i].out,
+						result: ImportData[i].result
+					})
+				}
+			},
+			NewImport(ImportData) {
 				let away = '';
 				let home = '';
 				let firstPart = '';
 				let secondPart = '';
 				let thirdPart = '';
 
-				for(var i = 0; i < listdata.length; i++) {
+				for(var i = 0; i < ImportData.length; i++) {
 
-					if(listdata[i].Player != '') {
+					if(ImportData[i].Player != '') {
 
-						if(firstPart != listdata[i].numforgame)
-							if(listdata[i].numforgame != '') firstPart = listdata[i].numforgame;
+						if(firstPart != ImportData[i].numforgame)
+							if(ImportData[i].numforgame != '') firstPart = ImportData[i].numforgame;
 
-						if(away != listdata[i].away.slice(0, 2) ||
-							home != listdata[i].home.substr(-2, 2)) {
-							away = listdata[i].away.slice(0, 2);
-							home = listdata[i].home.substr(-2, 2);
+						if(away != ImportData[i].away.slice(0, 2) ||
+							home != ImportData[i].home.substr(-2, 2)) {
+							away = ImportData[i].away.slice(0, 2);
+							home = ImportData[i].home.substr(-2, 2);
 							secondPart = away + 'VS' + home;
 						}
 
-						if(thirdPart != listdata[i].inning) thirdPart = listdata[i].inning;
+						if(thirdPart != ImportData[i].inning) thirdPart = ImportData[i].inning;
 
 						BaseballRef.push({
-							Game: firstPart,
-							Team: secondPart,
-							Inning: thirdPart,
-							Log: listdata[i].log,
-							Player: listdata[i].Player,
-							Base1: listdata[i].base1,
-							Base2: listdata[i].base2,
-							Base3: listdata[i].base3,
-							Id: listdata[i].id,
-							Direction: listdata[i].direction,
-							Out: listdata[i].out,
-							Result: listdata[i].result
+							game: firstPart,
+							team: secondPart,
+							inning: thirdPart,
+							log: ImportData[i].log,
+							Player: ImportData[i].Player,
+							base1: ImportData[i].base1,
+							base2: ImportData[i].base2,
+							base3: ImportData[i].base3,
+							id: ImportData[i].id,
+							direction: ImportData[i].direction,
+							out: ImportData[i].out,
+							result: ImportData[i].result
 						})
 					}
 				}
 			},
-			getData() {
+			getImport() {
+
 				let vm = this
 
-				vm.axios.get('static/data.json')
-					.then(function(response) {
-						console.log(response);
-						vm.listdata = response.data
-					})
-					.catch(function(error) {
-						console.log(error);
-					});
+				$(document).ready(function() {
+					$('#files').bind('change', handleFileSelect);
+				});
+
+				function handleFileSelect(evt) {
+
+					var files = evt.target.files; // FileList object
+					var file = files[0];
+
+					printTable(file);
+				}
+
+				function printTable(file) {
+					var reader = new FileReader();
+					reader.readAsText(file);
+					reader.onload = function(event) {
+						var csv = event.target.result;
+						vm.ImportData = $.csv.toObjects(csv);
+					};
+				}
 			}
 		},
 		mounted() {
-			this.getData();
+
+			this.getImport();
+
 			BaseballRef.on('value', function(snapshot) {
 				let val = snapshot.val();
 				let list = '';
@@ -161,19 +195,19 @@
 
 				$.each(val, function(i, item) {
 
-					if(inning != item.Inning) {
+					if(inning != item.inning) {
 
 						list = `
 							${list}
 							<div class="col-3">
 								<a href="#/child/${i}" style='margin:5px;'
 									class="router-link-exact-active router-link-active btn btn-secondary">
-										第${item.Game}場：${item.Team}：${item.Inning}
+										第${item.game}場：${item.team}：${item.inning}
 								</a>
 							</div>
 						`
 
-						inning = item.Inning
+						inning = item.inning
 
 						arrayHeader = i;
 
@@ -222,5 +256,16 @@
 	
 	.key {
 		color: red;
+	}
+	
+	input[type="file"] {
+		display: none;
+	}
+	
+	.custom-file-upload {
+		border: 1px solid #ccc;
+		display: inline-block;
+		padding: 6px 12px;
+		cursor: pointer;
 	}
 </style>
