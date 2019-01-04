@@ -21,6 +21,7 @@
 	};
 	var BaseballRef = firebase.database().ref('Baseball');
 	var idArray = Array();
+	var modifiedArray = Array();
 	export default {
 		methods: {
 			getLog() {
@@ -151,10 +152,16 @@
 						$('#enable_modify' + idArray[key][index]).attr('disabled', false);
 					}
 					
-					$("#"+key).css("background-color", "#8064A1")
+					modifiedArray.push(key);
+					
+					var length = modifiedArray.length;
+					
+					for (var i=0; i < length; i++) {
+						$("#"+modifiedArray[i]).css("background-color", "#8064A1")
+					}
 				});
 
-			},
+			}
 		}
 	};
 </script>
