@@ -127,12 +127,7 @@
 						if(firstPart != ImportData[i].numforgame)
 							if(ImportData[i].numforgame != '') firstPart = ImportData[i].numforgame;
 
-						if(away != ImportData[i].away.slice(0, 2) ||
-							home != ImportData[i].home.substr(-2, 2)) {
-							away = ImportData[i].away.slice(0, 2);
-							home = ImportData[i].home.substr(-2, 2);
-							secondPart = away + 'VS' + home;
-						}
+						secondPart = ImportData[i].away + ' VS ' + ImportData[i].home
 
 						if(thirdPart != ImportData[i].inning) thirdPart = ImportData[i].inning;
 
