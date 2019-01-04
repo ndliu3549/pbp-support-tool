@@ -200,8 +200,8 @@
 						list = `
 							${list}
 							<div class="col-3">
-								<a href="#/child/${i}" style='margin:5px;'
-									class="router-link-exact-active router-link-active btn btn-secondary">
+								<a id="${i}" href="#/child/${i}" style='margin:5px;'
+									class="router-link-exact-active router-link-active btn btn-secondary ">
 										第${item.game}場：${item.team}：${item.inning}
 								</a>
 							</div>

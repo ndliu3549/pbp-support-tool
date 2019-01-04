@@ -109,6 +109,7 @@
 				$('#p').on('click', '.summit', function() {
 
 					var key = $(this).data('key');
+
 					var dataArray = Array();
 
 					for(var index in idArray[key]) {
@@ -149,6 +150,8 @@
 
 						$('#enable_modify' + idArray[key][index]).attr('disabled', false);
 					}
+					
+					$("#"+key).css("background-color", "#8064A1")
 				});
 
 			},
