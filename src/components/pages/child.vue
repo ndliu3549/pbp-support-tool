@@ -60,16 +60,16 @@
 
 						list = `
 						${list}
-						<div style='margin:5px;text-align:center;' class="col">
-							<li>${val.log}</li>
-							<input disabled id='input_Player${ID}' size='3' value=${val.Player} />
-							<input disabled id='input_base1${ID}' size='3' value=${val.base1} />
-							<input disabled id='input_base2${ID}' size='3' value=${val.base2} />
-							<input disabled id='input_base3${ID}' size='3' value=${val.base3} />
-							<input disabled id='input_id${ID}' size='3' value=${val.id} />
-							<input disabled id='input_direction${ID}' size='1' value=${val.direction} />
-							<input disabled id='input_out${ID}' size='3' value=${val.out} />
-							<input disabled id='input_result${ID}' size='16' value=${val.result} />
+						<div style='margin:5px; text-align:center' class="col">
+							<pre>${val.log}</pre>
+							<input disabled id='input_Player${ID}' style='text-align:center; width:70px' value=${val.Player} />
+							<input disabled id='input_base1${ID}' style='text-align:center; width:70px' value=${val.base1} />
+							<input disabled id='input_base2${ID}' style='text-align:center; width:70px' value=${val.base2} />
+							<input disabled id='input_base3${ID}' style='text-align:center; width:70px' value=${val.base3} />
+							<input disabled id='input_id${ID}' style='text-align:center; width:70px' value=${val.id} />
+							<input disabled id='input_direction${ID}' style='text-align:center; width:30px' value=${val.direction} />
+							<input disabled id='input_out${ID}' style='text-align:center; width:70px' value=${val.out} />
+							<input disabled id='input_result${ID}' style='text-align:center; width:320px' value=${val.result} />
 						</div>
 					`
 					});
