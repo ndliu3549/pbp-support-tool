@@ -1,11 +1,11 @@
 <template>
 	<div>
-		<div style='text-align:center;margin:10px;'>
+		<div style='margin:5px; text-align:center'>
 			<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#claps" @click='getLog()'>
 				顯示 Log
 			</button>
 		</div>
-		<div id='claps' class="collapse in">
+		<div id='claps' class="collapse">
 			<p id='p'></p>
 		</div>
 	</div>
@@ -77,7 +77,7 @@
 
 				list = `
 					${list}
-					<div style='margin:10px;text-align:center;' class="col">
+					<div style='margin:10px; text-align:center' class="col">
 						<button id='enable_modify${groupID}'
 							type='button' class='enable btn btn-light' data-key=${groupID}>啟用更正</button>
 						<button disabled id='summit_modify${groupID}'

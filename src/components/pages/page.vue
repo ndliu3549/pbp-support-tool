@@ -37,7 +37,7 @@
 
 		<div>
 			<router-view></router-view>
-			<div class="container demo">
+			<div>
 				<ul id='ul'>
 				</ul>
 			</div>
@@ -183,24 +183,38 @@
 				let list = '';
 				let inning = '';
 				let arrayHeader = '';
+				let itemGame = '';
 
 				list = `
-					<div class="row">
-				`
+						<div>
+					`
 
 				$.each(val, function(i, item) {
+
+					if(itemGame != item.game) {
+						itemGame = item.game;
+
+						list = `
+								${list}
+								</div>
+								<div style='margin:5px'>
+									<button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#clapsme${itemGame}">
+										第 ${itemGame} 場
+									</button>
+								</div>
+								<div id='clapsme${itemGame}' class="collapse">
+							`
+					}
 
 					if(inning != item.inning) {
 
 						list = `
-							${list}
-							<div class="col-3">
-								<a id="${i}" href="#/child/${i}" style='margin:5px;'
+								${list}
+								<a id="${i}" href="#/child/${i}" style='margin:5px'
 									class="router-link-exact-active router-link-active btn btn-secondary ">
 										第${item.game}場：${item.team}：${item.inning}
 								</a>
-							</div>
-						`
+							`
 
 						inning = item.inning
 
@@ -209,17 +223,9 @@
 						idArray[arrayHeader] = Array();
 					}
 
-					list = `
-						${list}
-					`
-
 					idArray[arrayHeader].push(i);
 				});
 
-				list = `
-					${list}
-					</div>
-				`
 				$('ul').html(list)
 			});
 		}
