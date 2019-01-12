@@ -157,8 +157,7 @@
 				});
 
 				function handleFileSelect(evt) {
-
-					var files = evt.target.files; // FileList object
+					var files = evt.target.files;
 					var file = files[0];
 
 					printTable(file);
@@ -186,8 +185,8 @@
 				let itemGame = '';
 
 				list = `
-						<div>
-					`
+					<div>
+				`
 
 				$.each(val, function(i, item) {
 
@@ -195,26 +194,26 @@
 						itemGame = item.game;
 
 						list = `
-								${list}
-								</div>
-								<div style='margin:5px'>
-									<button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#clapsme${itemGame}">
-										第 ${itemGame} 場
-									</button>
-								</div>
-								<div id='clapsme${itemGame}' class="collapse">
-							`
+							${list}
+							</div>
+							<div style='margin:5px'>
+								<button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#clapsme${itemGame}">
+									第 ${itemGame} 場
+								</button>
+							</div>
+							<div id='clapsme${itemGame}' class="collapse">
+						`
 					}
 
 					if(inning != item.inning) {
 
 						list = `
-								${list}
-								<a id="${i}" href="#/child/${i}" style='margin:5px'
-									class="router-link-exact-active router-link-active btn btn-secondary ">
-										第${item.game}場：${item.team}：${item.inning}
-								</a>
-							`
+							${list}
+							<a id="${i}" href="#/child/${i}" style='margin:5px'
+								class="router-link-exact-active router-link-active btn btn-secondary ">
+									第${item.game}場：${item.team}：${item.inning}
+							</a>
+						`
 
 						inning = item.inning
 
