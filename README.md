@@ -2,7 +2,7 @@
 
 > A Vue.js project
 
-![image](https://github.com/ndliu3549/pbp-support-tool/blob/master/demo_04.gif)
+![image](https://github.com/ndliu3549/pbp-support-tool/blob/master/demo_05.gif)
 
 ## Build Setup
 
