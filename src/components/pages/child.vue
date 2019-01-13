@@ -61,7 +61,7 @@
 						list = `
 						${list}
 						<div style='margin:5px; text-align:center' class="col">
-							<pre>${val.log}</pre>
+							<pre style='font-weight:bold'>${val.log}</pre>
 							<input disabled id='input_Player${ID}' style='text-align:center; width:70px' value=${val.Player} />
 							<input disabled id='input_base1${ID}' style='text-align:center; width:70px' value=${val.base1} />
 							<input disabled id='input_base2${ID}' style='text-align:center; width:70px' value=${val.base2} />
@@ -79,9 +79,9 @@
 					${list}
 					<div style='margin:10px; text-align:center' class="col">
 						<button id='enable_modify${groupID}'
-							type='button' class='enable btn btn-light' data-key=${groupID}>啟用更正</button>
+							type='button' class='enable btn btn-light' data-key=${groupID}>Enable</button>
 						<button disabled id='summit_modify${groupID}'
-							type='button' class='summit btn btn-light' data-key=${groupID}>送出更正</button>
+							type='button' class='summit btn btn-light' data-key=${groupID}>Commit</button>
 					</div>
 				`
 
