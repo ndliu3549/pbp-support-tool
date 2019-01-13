@@ -2,7 +2,7 @@
 	<div>
 		<div style='margin:5px; text-align:center'>
 			<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#claps" @click='getLog()'>
-				顯示 Log
+				Display Log
 			</button>
 		</div>
 		<div id='claps' class="collapse">
@@ -67,7 +67,7 @@
 							<input disabled id='input_base2${ID}' style='text-align:center; width:70px' value=${val.base2} />
 							<input disabled id='input_base3${ID}' style='text-align:center; width:70px' value=${val.base3} />
 							<input disabled id='input_id${ID}' style='text-align:center; width:70px' value=${val.id} />
-							<input disabled id='input_direction${ID}' style='text-align:center; width:30px' value=${val.direction} />
+							<input disabled id='input_direction${ID}' style='text-align:center; width:40px' value=${val.direction} />
 							<input disabled id='input_out${ID}' style='text-align:center; width:70px' value=${val.out} />
 							<input disabled id='input_result${ID}' style='text-align:center; width:320px' value=${val.result} />
 						</div>
