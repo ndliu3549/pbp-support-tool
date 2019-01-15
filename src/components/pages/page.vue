@@ -38,7 +38,7 @@
 			</div>
 
 			<div id='readme' class="collapse">
-				<p id='p'></p>
+				<h6 id='h6'></h6>
 			</div>
 
 		</div>
@@ -95,12 +95,17 @@
 				let list = '';
 				
 				list = `
-					<div style='margin:10px 10px 10px 10px'>
-						<img src="/static/demo_05.gif" width="955" height="455" />
+					<div>
+						<div style='margin:10px 10px 10px 10px'>
+							This is manual.
+						</div>
+						<div>
+							<img src="/static/demo_05.gif" width="955" height="455" style='border-style: outset'/>
+						</div>
 					</div>
 				`
 				
-				$('p').html(list)
+				$('h6').html(list)
 			},
 			getExportJSON() {
 				let vm = this;
