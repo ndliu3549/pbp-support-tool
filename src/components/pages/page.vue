@@ -7,7 +7,7 @@
 				<button class='btn btn-light' type='button' @click='NewImport(ImportData)'>
 					Import New LOG
 				</button>
-
+				
 				<label for="files" class="custom-file-upload">
     				<i class="fa fa-cloud-upload"></i> Select File（CSV）
 				</label>
@@ -31,6 +31,14 @@
 				<button class='btn btn-light' type='button' @click='CleanData()'>
 					Clean Data
 				</button>
+				
+				<button type="button" class="btn btn-dark" data-toggle="collapse" data-target="#readme" @click='Readme()'>
+					Readme
+				</button>
+			</div>
+
+			<div id='readme' class="collapse">
+				<p id='p'></p>
 			</div>
 
 		</div>
@@ -83,6 +91,17 @@
 			}
 		},
 		methods: {
+			Readme() {
+				let list = '';
+				
+				list = `
+					<div style='margin:10px 10px 10px 10px'>
+						<img src="/static/demo_05.gif" width="955" height="455" />
+					</div>
+				`
+				
+				$('p').html(list)
+			},
 			getExportJSON() {
 				let vm = this;
 				BaseballRef.on('value', function(snapshot) {
@@ -196,7 +215,7 @@
 						list = `
 							${list}
 							</div>
-							<div style='margin:5px'>
+							<div style='margin:5px 5px 5px 5px'>
 								<button type="button" class="btn btn-secondary" data-toggle="collapse" data-target="#clapsme${itemGame}">
 									第 ${itemGame} 場
 								</button>
@@ -209,7 +228,7 @@
 
 						list = `
 							${list}
-							<a id="${i}" href="#/child/${i}" style='margin:5px'
+							<a id="${i}" href="#/child/${i}" style='margin:5px 5px 5px 5px'
 								class="router-link-exact-active router-link-active btn btn-secondary ">
 									第${item.game}場：${item.team}：${item.inning}
 							</a>
@@ -235,7 +254,7 @@
 	pre {
 		outline: 1px solid #ccc;
 		padding: 5px;
-		margin: 5px;
+		margin: 5px 5px 5px 5px;
 	}
 	
 	.string {

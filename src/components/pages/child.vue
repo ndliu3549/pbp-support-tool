@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div style='margin:5px; text-align:center'>
+		<div style='margin:5px 5px 5px 5px; text-align:center'>
 			<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#claps" @click='getLog()'>
 				Display Log
 			</button>
@@ -60,7 +60,7 @@
 
 						list = `
 						${list}
-						<div style='margin:5px; text-align:center' class="col">
+						<div style='margin:5px 5px 5px 5px; text-align:center' class="col">
 							<pre style='font-weight:bold'>${val.log}</pre>
 							<input disabled id='input_Player${ID}' style='text-align:center; width:70px' value=${val.Player} />
 							<input disabled id='input_base1${ID}' style='text-align:center; width:70px' value=${val.base1} />
@@ -77,7 +77,7 @@
 
 				list = `
 					${list}
-					<div style='margin:10px; text-align:center' class="col">
+					<div style='margin:10px 10px 10px 10px; text-align:center' class="col">
 						<button id='enable_modify${groupID}'
 							type='button' class='enable btn btn-light' data-key=${groupID}>Enable</button>
 						<button disabled id='summit_modify${groupID}'
