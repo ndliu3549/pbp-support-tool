@@ -100,7 +100,7 @@
 							This is manual.
 						</div>
 						<div>
-							<img src="/static/demo_05.gif" width="955" height="455" style='border-style: outset'/>
+							<img src="/static/demo_06.gif" width="955" height="455" style='border-style: outset'/>
 						</div>
 					</div>
 				`
