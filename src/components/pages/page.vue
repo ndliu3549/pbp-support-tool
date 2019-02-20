@@ -7,7 +7,7 @@
 				<button class='btn btn-light' type='button' @click='NewImport(ImportData)'>
 					Import New LOG
 				</button>
-				
+
 				<label for="files" class="custom-file-upload">
     				<i class="fa fa-cloud-upload"></i> Select File（CSV）
 				</label>
@@ -31,7 +31,7 @@
 				<button class='btn btn-light' type='button' @click='CleanData()'>
 					Clean Data
 				</button>
-				
+
 				<button type="button" class="btn btn-dark" data-toggle="collapse" data-target="#readme" @click='Readme()'>
 					Readme
 				</button>
@@ -91,9 +91,12 @@
 			}
 		},
 		methods: {
+			getUrlKey(name) {
+				return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[1].replace(/\+/g, '%20')) || null
+			},
 			Readme() {
 				let list = '';
-				
+
 				list = `
 					<div>
 						<div style='margin:10px 10px 10px 10px'>
@@ -104,7 +107,7 @@
 						</div>
 					</div>
 				`
-				
+
 				$('h6').html(list)
 			},
 			getExportJSON() {
@@ -200,6 +203,8 @@
 		mounted() {
 
 			this.getImport();
+			
+			let URL_id = this.getUrlKey('id');
 
 			BaseballRef.on('value', function(snapshot) {
 				let val = snapshot.val();
@@ -209,6 +214,13 @@
 				let itemGame = '';
 
 				list = `
+					<div style='font-weight:bold; margin:5px 100px 5px 5px; float:right'>
+							URL_id = ${URL_id}
+					</div>
+				`
+
+				list = `
+					${list}
 					<div>
 				`
 
