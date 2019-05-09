@@ -7,7 +7,6 @@ import Child from '@/components/pages/child';
 Vue.use(VueRouter);
 
 export default new VueRouter({
-	mode: 'history',
 	routes: [{
 		name: '分頁',
 		path: '/',
