@@ -5,35 +5,42 @@
 
 			<div>
 				<button class='btn btn-light' type='button' @click='NewImport(ImportData)'>
-					Import New LOG
+					匯入新 Log
+					<!--Import New LOG-->
 				</button>
-				
+
 				<label for="files" class="custom-file-upload">
-    				<i class="fa fa-cloud-upload"></i> Select File（CSV）
+    				<i class="fa fa-cloud-upload"></i> 選取匯入檔案（CSV 格式）
+    				<!--Select File（CSV）-->
 				</label>
 
 				<input id="files" type="file" name="files[]" multiple/>
 
 				<button class='btn btn-light' type='button' @click='OldImport(ImportData)'>
-					Import Old LOG
+					匯入 pbptool 格式 Log
+					<!--Import Old LOG-->
 				</button>
 			</div>
 
 			<div>
-				<a class='btn btn-light' href="http://localhost:8080/">Refresh Page</a>
+				<a class='btn btn-light' href="http://localhost:8080/">回首頁</a>
+				<!--Refresh Page-->
 
 				<button class='btn btn-light' type='button' @click="getExportJSON">
 					<downloadExcel :data="exportjson" :fields="json_fields" type="csv" name="Old LOG.csv">
-						Export Old LOG（Double Click）
+						匯出 pbptool 格式 Log（雙擊）
+						<!--Export Old LOG（Double Click）-->
 					</downloadExcel>
 				</button>
 
 				<button class='btn btn-light' type='button' @click='CleanData()'>
-					Clean Data
+					清除資料（需重新匯入）
+					<!--Clean Data-->
 				</button>
 				
 				<button type="button" class="btn btn-dark" data-toggle="collapse" data-target="#readme" @click='Readme()'>
-					Readme
+					操作示範
+					<!--Readme-->
 				</button>
 			</div>
 
@@ -96,11 +103,24 @@
 				
 				list = `
 					<div>
-						<div style='margin:10px 10px 10px 10px'>
-							This is manual.
+						<center>
+						<div style='margin:10px 10px 10px 10px; white-space:pre-line; width:500px; text-align:left;'>
+							【匯入 Log 的方法】
+							一、點擊〈選取匯入檔案〉
+							二、點擊〈匯入新 Log〉或〈匯入 pbptool 格式 Log〉
+							
+							【編輯 Log 的方法】
+							一、點選場次
+							二、點擊〈顯示 Log〉
+							三、編輯
+							四、完成
+							五、點擊〈顯示 Log〉收合
+							
 						</div>
+						</center>
+						
 						<div>
-							<img src="/static/demo_06.gif" width="955" height="455" style='border-style: outset'/>
+							<img src="/static/demo_07.gif" width="955" height="455" style='border-style: outset'/>
 						</div>
 					</div>
 				`

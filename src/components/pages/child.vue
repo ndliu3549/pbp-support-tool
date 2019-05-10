@@ -2,7 +2,8 @@
 	<div>
 		<div style='margin:5px 5px 5px 5px; text-align:center'>
 			<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#claps" @click='getLog()'>
-				Display Log
+				顯示 Log
+				<!--Display Log-->
 			</button>
 		</div>
 		<div id='claps' class="collapse">
@@ -79,9 +80,11 @@
 					${list}
 					<div style='margin:10px 10px 10px 10px; text-align:center' class="col">
 						<button id='enable_modify${groupID}'
-							type='button' class='enable btn btn-light' data-key=${groupID}>Enable</button>
+							type='button' class='enable btn btn-light' data-key=${groupID}>編輯</button>
+							<!--Enable-->
 						<button disabled id='summit_modify${groupID}'
-							type='button' class='summit btn btn-light' data-key=${groupID}>Commit</button>
+							type='button' class='summit btn btn-light' data-key=${groupID}>完成</button>
+							<!--Commit-->
 					</div>
 				`
 
