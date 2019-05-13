@@ -201,15 +201,15 @@
 						</center>
 							<br>
 						<div>
-							<img src="/static/demo_08-1.gif" width="955" height="455" style='border-style: outset'/>
+							<img src="/static/demo_09-1.gif" width="955" height="455" style='border-style: outset'/>
 						</div>
 							<br>
 						<div>
-							<img src="/static/demo_08-2.gif" width="955" height="455" style='border-style: outset'/>
+							<img src="/static/demo_09-2.gif" width="955" height="455" style='border-style: outset'/>
 						</div>
 							<br>
 						<div>
-							<img src="/static/demo_08-3.gif" width="955" height="455" style='border-style: outset'/>
+							<img src="/static/demo_09-3.gif" width="955" height="455" style='border-style: outset'/>
 						</div>
 					</div>
 				`
