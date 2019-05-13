@@ -42,10 +42,19 @@
 					操作示範
 					<!--Readme-->
 				</button>
+				
+				<button type="button" class="btn btn-dark" data-toggle="collapse" data-target="#setDB" @click='setDB()'>
+					設定資料庫示範
+					<!--set Database-->
+				</button>
 			</div>
 
 			<div id='readme' class="collapse">
 				<h6 id='h6'></h6>
+			</div>
+			
+			<div id='setDB' class="collapse">
+				<h7 id='h7'></h7>
 			</div>
 
 		</div>
@@ -98,6 +107,74 @@
 			}
 		},
 		methods: {
+			setDB () {
+				let list = '';
+				
+				list = `
+					<div>
+						<center>
+						<div style='margin:10px 10px 10px 10px; white-space:pre-line; width:500px; text-align:left;'>
+						
+							首先，登入 Google 帳號，然後來到網址
+							https://console.firebase.google.com/
+							創建一個新專案〈如圖一、圖二〉
+							
+							接下來，進入專案，切換到 Database 頁面〈如圖三〉
+							下拉看到 Realtime Database，建立資料庫〈如圖四〉
+							勾選〈以測試模式啟動〉〈如圖五〉
+							
+							建立資料庫後，切換到專案設定頁面〈如圖六〉
+							記下〈專案 ID〉以及〈網路 API 金鑰〉〈如圖七〉
+							
+							打開 pbp-support-tool 資料夾
+							找到 src -> components -> pages 資料夾內的兩個檔案
+							用記事本或程式編輯工具〈推薦使用 Sublime Text〉
+							打開 child.vue 以及 page.vue，找到兩個檔案裡的 config 資料結構
+							替換 API Key 跟專案 ID〈如圖八、圖九〉成剛才〈如圖七〉記下的數據
+							儲存檔案，重新匯入 Log〈參照匯入 Log 的方法〉即可
+						</div>
+						</center>
+							<br>
+						<div>
+							<img src="/static/setDB/setDB-01.png" width="75%" style='border-style: outset'/>
+						</div>
+							<br>
+						<div>
+							<img src="/static/setDB/setDB-02.png" style='border-style: outset'/>
+						</div>
+							<br>
+						<div>
+							<img src="/static/setDB/setDB-03.png" style='border-style: outset'/>
+						</div>
+							<br>
+						<div>
+							<img src="/static/setDB/setDB-04.png" style='border-style: outset'/>
+						</div>
+							<br>
+						<div>
+							<img src="/static/setDB/setDB-05.png" style='border-style: outset'/>
+						</div>
+							<br>
+						<div>
+							<img src="/static/setDB/setDB-06.png" style='border-style: outset'/>
+						</div>
+							<br>
+						<div>
+							<img src="/static/setDB/setDB-07.png" style='border-style: outset'/>
+						</div>
+							<br>
+						<div>
+							<img src="/static/setDB/setDB-08.png" style='border-style: outset'/>
+						</div>
+							<br>
+						<div>
+							<img src="/static/setDB/setDB-09.png" style='border-style: outset'/>
+						</div>
+					</div>
+				`
+				
+				$('h7').html(list)
+			},
 			Readme() {
 				let list = '';
 				
