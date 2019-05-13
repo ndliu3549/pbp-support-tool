@@ -108,7 +108,8 @@
 							【匯入 Log 的方法〈圖一〉】
 							一、點擊〈清除資料〉
 							二、點擊〈選取匯入檔案〉
-							二、點擊〈匯入新 Log〉或〈匯入 pbptool 格式 Log〉
+							三、點擊〈匯入新 Log〉或〈匯入 pbptool 格式 Log〉
+							檔名不限，格式符合要求即可
 							
 							【編輯 Log 的方法〈圖二〉】
 							一、點選場次
@@ -119,18 +120,17 @@
 							
 							【輸出 Log 的方法〈圖三〉】
 							點擊兩次〈匯出 pbptool 格式 Log〉即可
-							
 						</div>
 						</center>
-
+							<br>
 						<div>
 							<img src="/static/demo_08-1.gif" width="955" height="455" style='border-style: outset'/>
 						</div>
-
+							<br>
 						<div>
 							<img src="/static/demo_08-2.gif" width="955" height="455" style='border-style: outset'/>
 						</div>
-						
+							<br>
 						<div>
 							<img src="/static/demo_08-3.gif" width="955" height="455" style='border-style: outset'/>
 						</div>
