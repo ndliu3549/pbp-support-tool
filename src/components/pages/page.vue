@@ -27,7 +27,7 @@
 				<!--Refresh Page-->
 
 				<button class='btn btn-light' type='button' @click="getExportJSON">
-					<downloadExcel :data="exportjson" :fields="json_fields" type="csv" name="Old LOG.csv">
+					<downloadExcel :data="exportjson" :fields="json_fields" type="csv" name="pbptool_log.csv">
 						匯出 pbptool 格式 Log（雙擊）
 						<!--Export Old LOG（Double Click）-->
 					</downloadExcel>
@@ -105,25 +105,34 @@
 					<div>
 						<center>
 						<div style='margin:10px 10px 10px 10px; white-space:pre-line; width:500px; text-align:left;'>
-							【匯入 Log 的方法】
-							一、點擊〈選取匯入檔案〉
+							【匯入 Log 的方法〈圖一〉】
+							一、點擊〈清除資料〉
+							二、點擊〈選取匯入檔案〉
 							二、點擊〈匯入新 Log〉或〈匯入 pbptool 格式 Log〉
 							
-							【編輯 Log 的方法】
+							【編輯 Log 的方法〈圖二〉】
 							一、點選場次
 							二、點擊〈顯示 Log〉
 							三、編輯
 							四、完成
 							五、點擊〈顯示 Log〉收合
 							
-							【輸出 Log 的方法】
+							【輸出 Log 的方法〈圖三〉】
 							點擊兩次〈匯出 pbptool 格式 Log〉即可
 							
 						</div>
 						</center>
+
+						<div>
+							<img src="/static/demo_08-1.gif" width="955" height="455" style='border-style: outset'/>
+						</div>
+
+						<div>
+							<img src="/static/demo_08-2.gif" width="955" height="455" style='border-style: outset'/>
+						</div>
 						
 						<div>
-							<img src="/static/demo_07.gif" width="955" height="455" style='border-style: outset'/>
+							<img src="/static/demo_08-3.gif" width="955" height="455" style='border-style: outset'/>
 						</div>
 					</div>
 				`
