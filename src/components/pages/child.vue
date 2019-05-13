@@ -14,11 +14,11 @@
 
 <script>
 	var config = {
-		apiKey: 'AIzaSyCaWqHus5lbszeGpNqjh9PhgnKbTY_GpaM',
-		authDomain: 'new-firebase-3065e.firebaseapp.com',
-		databaseURL: 'https://new-firebase-3065e.firebaseio.com',
-		projectId: 'new-firebase-3065e',
-		storageBucket: 'new-firebase-3065e.appspot.com',
+		apiKey: 'AIzaSyDuscttLRI74uotEQG_al8kKhU8QxKzgDI',
+		authDomain: 'new-firebase-8b1fc.firebaseapp.com',
+		databaseURL: 'https://new-firebase-8b1fc.firebaseio.com',
+		projectId: 'new-firebase-8b1fc',
+		storageBucket: 'new-firebase-8b1fc.appspot.com',
 	};
 	var BaseballRef = firebase.database().ref('Baseball');
 	var idArray = Array();
