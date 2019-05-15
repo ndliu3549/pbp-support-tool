@@ -54,7 +54,7 @@
 			</div>
 			
 			<div id='setDB' class="collapse">
-				<h7 id='h7'></h7>
+				<h5 id='h5'></h5>
 			</div>
 
 		</div>
@@ -113,7 +113,7 @@
 				list = `
 					<div>
 						<center>
-						<div style='margin:10px 10px 10px 10px; white-space:pre-line; width:500px; text-align:left;'>
+						<div style='margin:10px 10px 10px 10px; white-space:pre-line; width:700px; text-align:left;'>
 						
 							首先，登入 Google 帳號，然後來到網址
 							https://console.firebase.google.com/
@@ -191,7 +191,7 @@
 					</div>
 				`
 				
-				$('h7').html(list)
+				$('h5').html(list)
 			},
 			Readme() {
 				let list = '';
