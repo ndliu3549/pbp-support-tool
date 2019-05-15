@@ -136,38 +136,56 @@
 						</center>
 							<br>
 						<div>
+							〈圖一〉
+							<br>
 							<img src="/static/setDB_01.png" width="75%" style='border-style: outset'/>
 						</div>
 							<br>
 						<div>
+							〈圖二〉
+							<br>
 							<img src="/static/setDB_02.png" style='border-style: outset'/>
 						</div>
 							<br>
 						<div>
+							〈圖三〉
+							<br>
 							<img src="/static/setDB_03.png" style='border-style: outset'/>
 						</div>
 							<br>
 						<div>
+							〈圖四〉
+							<br>
 							<img src="/static/setDB_04.png" style='border-style: outset'/>
 						</div>
 							<br>
 						<div>
+							〈圖五〉
+							<br>
 							<img src="/static/setDB_05.png" style='border-style: outset'/>
 						</div>
 							<br>
 						<div>
+							〈圖六〉
+							<br>
 							<img src="/static/setDB_06.png" style='border-style: outset'/>
 						</div>
 							<br>
 						<div>
+							〈圖七〉
+							<br>
 							<img src="/static/setDB_07.png" style='border-style: outset'/>
 						</div>
 							<br>
 						<div>
+							〈圖八〉
+							<br>
 							<img src="/static/setDB_08.png" style='border-style: outset'/>
 						</div>
 							<br>
 						<div>
+							〈圖九〉
+							<br>
 							<img src="/static/setDB_09.png" style='border-style: outset'/>
 						</div>
 					</div>
