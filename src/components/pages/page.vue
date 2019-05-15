@@ -214,7 +214,15 @@
 							五、點擊〈顯示 Log〉收合
 							
 							【輸出 Log 的方法〈圖三〉】
-							點擊兩次〈匯出 pbptool 格式 Log〉即可
+							點擊兩次〈匯出 pbptool 格式 Log〉
+							在另存新檔視窗跳出的時候，輸入方便記憶的檔名即可
+							〈預設檔名 pbptool_log.csv〉
+							
+							【下載設定另存新檔的方法〈以 chrome 瀏覽器為例〉】
+							一、點擊瀏覽器的設定〈如圖四〉
+							二、下拉點擊進階選項〈如圖五〉
+							三、找到下載前詢問儲存位置的選項，啟用〈如圖六〉
+							四、完成
 						</div>
 						</center>
 							<br>
@@ -234,6 +242,24 @@
 							〈圖三〉
 							<br>
 							<img src="/static/demo_09-3.gif" width="955" height="455" style='border-style: outset'/>
+						</div>
+							<br>
+						<div>
+							〈圖四〉
+							<br>
+							<img src="/static/setDL_01.png" style='border-style: outset'/>
+						</div>
+							<br>
+						<div>
+							〈圖五〉
+							<br>
+							<img src="/static/setDL_02.png" style='border-style: outset'/>
+						</div>
+							<br>
+						<div>
+							〈圖六〉
+							<br>
+							<img src="/static/setDL_03.png" style='border-style: outset'/>
 						</div>
 					</div>
 				`
