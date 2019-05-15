@@ -219,14 +219,20 @@
 						</center>
 							<br>
 						<div>
+							〈圖一〉
+							<br>
 							<img src="/static/demo_09-1.gif" width="955" height="455" style='border-style: outset'/>
 						</div>
 							<br>
 						<div>
+							〈圖二〉
+							<br>
 							<img src="/static/demo_09-2.gif" width="955" height="455" style='border-style: outset'/>
 						</div>
 							<br>
 						<div>
+							〈圖三〉
+							<br>
 							<img src="/static/demo_09-3.gif" width="955" height="455" style='border-style: outset'/>
 						</div>
 					</div>
