@@ -305,7 +305,8 @@
 
 				for(var i = 0; i < ImportData.length; i++) {
 
-					if(ImportData[i].Player != '') {
+					if((ImportData[i].Player != '') || (ImportData[i].log.match('壘') != null)
+						|| (ImportData[i].log.match('出局') != null) || (ImportData[i].log.match('三振') != null)) {
 
 						if(firstPart != ImportData[i].numforgame)
 							if(ImportData[i].numforgame != '') firstPart = ImportData[i].numforgame;
@@ -313,6 +314,10 @@
 						secondPart = ImportData[i].away + ' VS ' + ImportData[i].home
 
 						if(thirdPart != ImportData[i].inning) thirdPart = ImportData[i].inning;
+						
+						if(ImportData[i].base1 == '') ImportData[i].base1 = 'NA';
+						if(ImportData[i].base2 == '') ImportData[i].base2 = 'NA';
+						if(ImportData[i].base3 == '') ImportData[i].base3 = 'NA';
 
 						BaseballRef.push({
 							game: firstPart,
