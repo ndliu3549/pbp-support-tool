@@ -268,6 +268,7 @@
 			},
 			getExportJSON() {
 				let vm = this;
+				vm.exportjson = [];
 				BaseballRef.on('value', function(snapshot) {
 					let val = snapshot.val();
 					$.each(val, function(i, item) {
