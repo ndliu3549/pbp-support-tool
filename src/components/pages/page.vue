@@ -4,6 +4,25 @@
 			<h2>CPBL PLAY BY PLAY Support Tool</h2>
 
 			<div>
+				<a class='btn btn-light' href="http://localhost:8080/">回首頁</a>
+				<!--Refresh Page-->
+				<button class='btn btn-light' type='button' @click='CleanData()'>
+					清除資料（需重新匯入）
+					<!--Clean Data-->
+				</button>
+
+				<button type="button" class="btn btn-light" data-toggle="collapse" data-target="#readme" @click='Readme()'>
+					操作示範
+					<!--Readme-->
+				</button>
+
+				<button type="button" class="btn btn-light" data-toggle="collapse" data-target="#setDB" @click='setDB()'>
+					設定資料庫示範
+					<!--set Database-->
+				</button>
+			</div>
+
+			<div>
 				<button class='btn btn-light' type='button' @click='NewImport(ImportData)'>
 					匯入新 Log
 					<!--Import New LOG-->
@@ -22,37 +41,17 @@
 				</button>
 			</div>
 
-			<div>
-				<a class='btn btn-light' href="http://localhost:8080/">回首頁</a>
-				<!--Refresh Page-->
-
+			<downloadExcel :data="exportjson" :fields="json_fields" type="csv" name="pbptool_log.csv">
 				<button class='btn btn-light' type='button' @click="getExportJSON">
-					<downloadExcel :data="exportjson" :fields="json_fields" type="csv" name="pbptool_log.csv">
-						匯出 pbptool 格式 Log（雙擊）
-						<!--Export Old LOG（Double Click）-->
-					</downloadExcel>
-				</button>
-
-				<button class='btn btn-light' type='button' @click='CleanData()'>
-					清除資料（需重新匯入）
-					<!--Clean Data-->
-				</button>
-				
-				<button type="button" class="btn btn-dark" data-toggle="collapse" data-target="#readme" @click='Readme()'>
-					操作示範
-					<!--Readme-->
-				</button>
-				
-				<button type="button" class="btn btn-dark" data-toggle="collapse" data-target="#setDB" @click='setDB()'>
-					設定資料庫示範
-					<!--set Database-->
-				</button>
-			</div>
+					匯出 pbptool 格式 Log
+					<!--Export Old LOG-->
+					</button>
+			</downloadExcel>
 
 			<div id='readme' class="collapse">
 				<h6 id='h6'></h6>
 			</div>
-			
+
 			<div id='setDB' class="collapse">
 				<h5 id='h5'></h5>
 			</div>
@@ -107,9 +106,9 @@
 			}
 		},
 		methods: {
-			setDB () {
+			setDB() {
 				let list = '';
-				
+
 				list = `
 					<div>
 						<center>
@@ -190,12 +189,12 @@
 						</div>
 					</div>
 				`
-				
+
 				$('h5').html(list)
 			},
 			Readme() {
 				let list = '';
-				
+
 				list = `
 					<div>
 						<center>
@@ -263,12 +262,12 @@
 						</div>
 					</div>
 				`
-				
+
 				$('h6').html(list)
 			},
 			getExportJSON() {
 				let vm = this;
-				vm.exportjson = [];
+				vm.exportjson.splice(0, vm.exportjson.length);
 				BaseballRef.on('value', function(snapshot) {
 					let val = snapshot.val();
 					$.each(val, function(i, item) {
@@ -306,8 +305,8 @@
 
 				for(var i = 0; i < ImportData.length; i++) {
 
-					if((ImportData[i].Player != '') || (ImportData[i].log.match('壘') != null)
-						|| (ImportData[i].log.match('出局') != null) || (ImportData[i].log.match('三振') != null)) {
+					if((ImportData[i].Player != '') || (ImportData[i].log.match('壘') != null) ||
+						(ImportData[i].log.match('出局') != null) || (ImportData[i].log.match('三振') != null)) {
 
 						if(firstPart != ImportData[i].numforgame)
 							if(ImportData[i].numforgame != '') firstPart = ImportData[i].numforgame;
@@ -315,7 +314,7 @@
 						secondPart = ImportData[i].away + ' VS ' + ImportData[i].home
 
 						if(thirdPart != ImportData[i].inning) thirdPart = ImportData[i].inning;
-						
+
 						if(ImportData[i].base1 == '') ImportData[i].base1 = 'NA';
 						if(ImportData[i].base2 == '') ImportData[i].base2 = 'NA';
 						if(ImportData[i].base3 == '') ImportData[i].base3 = 'NA';
